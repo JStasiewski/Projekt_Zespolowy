@@ -3,6 +3,7 @@
 <template>
   <div class="about">
     <h1>This is an Game page</h1>
+    <RouterLink to="/">Home</RouterLink>
   </div>
 </template>
 

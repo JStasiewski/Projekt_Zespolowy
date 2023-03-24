@@ -21,6 +21,8 @@ import { RouterLink, RouterView } from 'vue-router'
 
     <button type="submit" @click.prevent="register">Register</button>
   </form>
+  <span>Already have an account? </span>
+  <RouterLink to="/login">Login here!</RouterLink>
 </template>
 
 <script lang="ts">

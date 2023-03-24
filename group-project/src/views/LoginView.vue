@@ -14,6 +14,8 @@
 
     <button type="submit" @click.prevent="login">Login</button>
   </form>
+  <span>Don't have account yet? </span>
+  <RouterLink to="/register">Register here!</RouterLink>
 </template>
 
 <script lang="ts">
