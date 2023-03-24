@@ -30,6 +30,7 @@ export default {
     login() {
       // perform login logic here
       //console.log(this.email + ' ' + this.password)
+      if (1) this.$router.push('/') // TO DO WARUNEK ZE KLIENT POPRAWNIE SIE ZALOGOWAL
     }
   }
 }

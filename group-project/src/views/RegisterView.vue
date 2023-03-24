@@ -38,6 +38,7 @@ export default {
     register() {
       // perform registration logic here
       //console.log(this.name + ' ' + this.email)
+      if (1) this.$router.push('/') // TO DO WARUNEK ZE KLIENT POPRAWNIE SIE ZAREJESTROWAL
     }
   }
 }
