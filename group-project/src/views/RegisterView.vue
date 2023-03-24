@@ -1,10 +1,45 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
+</script>
 
 <template>
-  <div class="about">
-    <h1>This is an Register page</h1>
-  </div>
+  <form>
+    <label>
+      Name:
+      <input type="text" v-model="name" required />
+    </label>
+
+    <label>
+      Email:
+      <input type="email" v-model="email" required />
+    </label>
+
+    <label>
+      Password:
+      <input type="password" v-model="password" required />
+    </label>
+
+    <button type="submit" @click.prevent="register">Register</button>
+  </form>
 </template>
+
+<script lang="ts">
+export default {
+  data() {
+    return {
+      name: '',
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    register() {
+      // perform registration logic here
+      //console.log(this.name + ' ' + this.email)
+    }
+  }
+}
+</script>
 
 <style>
 @media (min-width: 1024px) {
