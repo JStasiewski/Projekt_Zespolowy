@@ -1,19 +1,44 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div class="about">
-    <h1>This is an Login page</h1>
-  </div>
+  <form>
+    <label>
+      Email:
+      <input type="email" v-model="email" required />
+    </label>
+
+    <label>
+      Password:
+      <input type="password" v-model="password" required />
+    </label>
+
+    <button type="submit" @click.prevent="login">Login</button>
+  </form>
 </template>
 
-<style>
-  @media (min-width: 1024px) {
-    .about {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
+<script lang="ts">
+export default {
+  data() {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    login() {
+      // perform login logic here
+      //console.log(this.email + ' ' + this.password)
     }
   }
+}
+</script>
+
+<style>
+@media (min-width: 1024px) {
+  .about {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+}
 </style>
-  
