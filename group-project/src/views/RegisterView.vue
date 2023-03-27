@@ -41,8 +41,14 @@ export default {
       // perform registration logic here
       //console.log(this.name + ' ' + this.email)
       const res = await createUserWithEmailAndPassword(auth, this.email, this.password)
-      console.log(res.user)
-      if (1) this.$router.push('/') // TO DO WARUNEK ZE KLIENT POPRAWNIE SIE ZAREJESTROWAL
+        .then(() => {
+          // Sign-out successful.
+          console.log('SUCCES!!!')
+          this.$router.push('/') // TO DO WARUNEK ZE KLIENT POPRAWNIE SIE ZALOGOWAL
+        })
+        .catch((error) => {
+          console.log('ERROR!!!') // An error happened.
+        })
     }
   }
 }

@@ -34,9 +34,15 @@ export default {
     async login() {
       // perform login logic here
       //console.log(this.email + ' ' + this.password)
-      const res = await signInWithEmailAndPassword(auth, this.email, this.password)
-      console.log(res.user)
-      if (1) this.$router.push('/') // TO DO WARUNEK ZE KLIENT POPRAWNIE SIE ZALOGOWAL
+      await signInWithEmailAndPassword(auth, this.email, this.password)
+        .then(() => {
+          // Sign-out successful.
+          console.log('SUCCES!!!')
+          this.$router.push('/') // TO DO WARUNEK ZE KLIENT POPRAWNIE SIE ZALOGOWAL
+        })
+        .catch((error) => {
+          console.log('ERROR!!!') // An error happened.
+        })
     }
   }
 }
