@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink } from 'vue-router'
+import { auth } from '../firebase'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 </script>
 
 <template>
@@ -35,9 +37,11 @@ export default {
     }
   },
   methods: {
-    register() {
+    async register() {
       // perform registration logic here
       //console.log(this.name + ' ' + this.email)
+      const res = await createUserWithEmailAndPassword(auth, this.email, this.password)
+      console.log(res.user)
       if (1) this.$router.push('/') // TO DO WARUNEK ZE KLIENT POPRAWNIE SIE ZAREJESTROWAL
     }
   }
