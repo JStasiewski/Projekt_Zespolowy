@@ -38,7 +38,7 @@ export default {
         .then(() => {
           // Sign-out successful.
           console.log('SUCCES!!!')
-          this.$router.push('/') // TO DO WARUNEK ZE KLIENT POPRAWNIE SIE ZALOGOWAL
+          this.$router.push('/')
         })
         .catch((error) => {
           console.log('ERROR!!!') // An error happened.
