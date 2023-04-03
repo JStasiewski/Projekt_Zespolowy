@@ -14,8 +14,8 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
 
     </div>
     <div v-else>
-      <p>Welcome, {{auth.currentUser.email}}</p>
-      <button @click="auth.signOut">Logout</button>
+      <p>Welcome, {{auth.currentUser.email + renterCount}}</p>
+      <button @click="logout">Logout</button>
     </div>
   </div>
 
@@ -50,10 +50,15 @@ export default {
     return {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      renterCount: ''
     }
   },
   methods: {
+    async logout() {
+      await auth.signOut()
+      this.renterCount = " "
+    },
     async register() {
       // perform registration logic here
       //console.log(this.name + ' ' + this.email)

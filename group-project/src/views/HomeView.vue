@@ -13,8 +13,8 @@ import {} from '../App.vue'
 
     </div>
     <div v-else>
-      <p>Welcome, {{auth.currentUser.email}}</p>
-      <button @click="auth.signOut">Logout</button>
+      <p>Welcome, {{auth.currentUser.email + renterCount}}</p>
+      <button @click="logout">Logout</button>
     </div>
   </div>
 
@@ -33,6 +33,23 @@ import {} from '../App.vue'
   </div>
 </div>
 </template>
+
+<script lang="ts">
+export default {
+  data() {
+    return {
+      renterCount: ''
+    }
+  },
+  methods: {
+    async logout() {
+      await auth.signOut()
+      this.renterCount = " "
+    }
+  }
+}
+    
+</script>
 
 <style>
  @import './nav.css';
