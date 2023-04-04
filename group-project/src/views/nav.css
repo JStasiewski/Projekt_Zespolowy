@@ -21,3 +21,13 @@
     margin-right: 7px;
     color: rgb(223, 42, 42);
 }
+
+.nav_2sec{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  margin-left: 10px;
+  margin-right: 10px;
+}

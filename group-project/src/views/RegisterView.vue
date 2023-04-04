@@ -9,11 +9,11 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
     <div class = "page_title">
       <RouterLink to="/"><img src="https://fontmeme.com/permalink/230403/7dbbbbca39b455368c8a7915a5b8e418.png" alt="guild-wars-2-font" border="0"></RouterLink>
     </div>
-    <div v-if="auth.currentUser==null">
+    <div v-if="auth.currentUser==null" class = "nav_2sec">
       <p>Welcome guest</p>
 
     </div>
-    <div v-else>
+    <div v-else class = "nav_2sec">
       <p>Welcome, {{auth.currentUser.email + renterCount}}</p>
       <button @click="logout">Logout</button>
     </div>
