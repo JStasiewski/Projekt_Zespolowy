@@ -2,23 +2,13 @@
 import { RouterLink } from 'vue-router'
 import { auth } from '../firebase'
 import { signInWithEmailAndPassword } from 'firebase/auth'
+import Nav_bar from './Nav_bar.vue';
+import App from '../App.vue'
 </script>
 
 <template>
 
-  <div class = "nav_bar" >
-    <div class = "page_title">
-      <RouterLink to="/"><img src="https://fontmeme.com/permalink/230403/7dbbbbca39b455368c8a7915a5b8e418.png" alt="guild-wars-2-font" border="0"></RouterLink>
-    </div>
-    <div v-if="auth.currentUser==null" class = "nav_2sec">
-      <p>Welcome guest</p>
-
-    </div>
-    <div v-else class = "nav_2sec">
-      <p>Welcome, {{auth.currentUser.email + renterCount}}</p>
-      <button @click="logout">Logout</button>
-    </div>
-  </div>
+  <Nav_bar/>
 
  <div class="login_body">
     <label class="login_elem">
@@ -60,6 +50,7 @@ export default {
         .then(() => {
           // Sign-out successful.
           console.log('SUCCES!!!')
+          App.methods?.logIn()
           this.$router.push('/crafting')
         })
         .catch((error) => {

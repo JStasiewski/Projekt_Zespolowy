@@ -3,6 +3,11 @@ import { RouterView } from 'vue-router'
 import { database } from './firebase'
 import { auth } from './firebase'
 import { collection , addDoc } from 'firebase/firestore'
+import LoginView from './views/LoginView.vue';
+import router from './router';
+import Nav_bar from './views/Nav_bar.vue';
+import { getCurrentInstance } from 'vue';
+
 </script>
 
 
@@ -16,7 +21,8 @@ import { collection , addDoc } from 'firebase/firestore'
 </style>
 
 <script lang="ts">
-export default{
+
+export default {
   methods: {
     async createUser(email_n:string, nname: string){
         const collectRef = collection(database,'Users')
@@ -29,10 +35,25 @@ export default{
         const ref = await addDoc(collectRef, data)
         console.log(" ref ",ref.id)
     },
+    logOut(){
+        console.log(this.IsLoggedIn);
+        this.IsLoggedIn = 0;
+        console.log(this.IsLoggedIn);
+      },
+    logIn(){
+      console.log(this.IsLoggedIn);
+      this.IsLoggedIn = 1;
+      console.log(this.IsLoggedIn);
+
+    },
+    getIsLoggedIn(): number{
+
+      return this.IsLoggedIn;
+    }
   },
   data() {
     return{
-      IsLoggedIn: true
+      IsLoggedIn: 0,
     };
   }
 }
