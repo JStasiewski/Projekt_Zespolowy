@@ -1,7 +1,12 @@
 .nav_bar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     margin-top: 0px;
     flex-direction: row;
+    flex-wrap: nowrap;
     align-items: center;
     border-style: solid;
     border-width: 0;
@@ -24,7 +29,7 @@
 
 .nav_2sec{
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column-reverse;
   align-items: center;
   justify-content: space-between;
   flex: 1;
@@ -32,3 +37,10 @@
   margin-right: 10px;
 }
 
+.nav_acc_info{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: left;
+}

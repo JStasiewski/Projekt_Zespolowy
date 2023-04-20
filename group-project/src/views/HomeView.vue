@@ -6,7 +6,7 @@ import Nav_bar from './Nav_bar.vue'
 
 <template>
 
-<Nav_bar/>
+<!-- <Nav_bar/> -->
   
 <div class="Home_body">
   <div v-if="auth.currentUser==null" class="Home_body_L">

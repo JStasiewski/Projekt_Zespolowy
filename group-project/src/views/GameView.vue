@@ -4,7 +4,7 @@ import Nav_bar from './Nav_bar.vue'
 
 <template>
 
-<Nav_bar />
+<!-- <Nav_bar /> -->
 
   <div>
     <h1>This is Crafting helper</h1>

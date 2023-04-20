@@ -8,7 +8,7 @@ import App from '../App.vue'
 
 <template>
 
-  <Nav_bar/>
+  <!-- <Nav_bar/> -->
 
  <div class="login_body">
     <label class="login_elem">
@@ -35,13 +35,17 @@ export default {
     return {
       email: '',
       password: '',
-      renterCount: ""
+      renterCount: "",
+      suc: false,
     }
   },
   methods: {
     async logout() {
       await auth.signOut()
       this.renterCount = " "
+    },
+    sendEmit(){
+      this.$emit("updateNav")
     },
     async login() {
       // perform login logic here
@@ -50,12 +54,17 @@ export default {
         .then(() => {
           // Sign-out successful.
           console.log('SUCCES!!!')
-          App.methods?.logIn()
-          this.$router.push('/crafting')
+          this.suc = true;
+          //App.methods?.logIn()
         })
         .catch((error) => {
           console.log('ERROR!!!') // An error happened.
         })
+        if(this.suc){
+          this.sendEmit()
+          await this.$nextTick()
+          this.$router.push('/')
+        }
     }
   }
 }

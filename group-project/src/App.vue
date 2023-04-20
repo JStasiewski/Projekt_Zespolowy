@@ -13,7 +13,8 @@ import { getCurrentInstance } from 'vue';
 
 
 <template>
-  <RouterView />
+  <Nav_bar :isLogged = "IsLoggedIn" @lOGOUT="logOut"/>
+  <RouterView @updateNav="logIn"/>
 </template>
 
 <style scoped>
@@ -37,23 +38,26 @@ export default {
     },
     logOut(){
         console.log(this.IsLoggedIn);
-        this.IsLoggedIn = 0;
+        this.IsLoggedIn = false;
         console.log(this.IsLoggedIn);
       },
     logIn(){
       console.log(this.IsLoggedIn);
-      this.IsLoggedIn = 1;
+      this.IsLoggedIn = true;
       console.log(this.IsLoggedIn);
 
     },
-    getIsLoggedIn(): number{
+    forceRefresh(){
 
+    },
+    getIsLoggedIn(): boolean{
+      
       return this.IsLoggedIn;
     }
   },
   data() {
     return{
-      IsLoggedIn: 0,
+      IsLoggedIn: false,
     };
   }
 }

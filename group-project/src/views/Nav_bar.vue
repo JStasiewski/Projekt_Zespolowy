@@ -9,13 +9,13 @@ import { RouterLink } from 'vue-router'
     <div class = "page_title">
       <RouterLink to="/"><img src="https://fontmeme.com/permalink/230403/7dbbbbca39b455368c8a7915a5b8e418.png" alt="guild-wars-2-font" border="0"></RouterLink>
     </div>
-    <div v-if="auth.currentUser==null">
+    <div v-if="!isLogged" class="nav_acc_info">
       <p>Welcome guest</p>
 
     </div>
-    <div v-else>
-      <p>Welcome, {{auth.currentUser.email}}</p>
-      <RouterLink @click="logoutNaV" to="/login">Logout</RouterLink>
+    <div class="nav_acc_info" v-else> 
+      <p>Welcome, {{auth.currentUser?.email}}</p>
+      <RouterLink @click.prevent="logoutNaV" to="/login">Logout</RouterLink>
       <!-- <button @click="logoutNaV">Logout</button> -->
     </div>
   </div>
@@ -29,9 +29,12 @@ import { RouterLink } from 'vue-router'
       methods:{
         logoutNaV(){
           auth.signOut();
-          App.methods?.logOut();
+          this.$emit('LOGOUT');
         }
       },
-      emits: ['LOGOUT']
+      emits: ['LOGOUT'],
+      props:{
+        isLogged: Boolean
+      }
     }
   </script>
