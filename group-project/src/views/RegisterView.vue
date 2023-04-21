@@ -2,12 +2,9 @@
 import { RouterLink } from 'vue-router'
 import { auth } from '../firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import Nav_bar from './Nav_bar.vue'
 </script>
 
 <template>
-
-<Nav_bar/>
 
   <form class="reg_body">
     <label class="reg_elem">
@@ -44,10 +41,6 @@ export default {
     }
   },
   methods: {
-    async logout() {
-      await auth.signOut()
-      this.renterCount = " "
-    },
     async register() {
       // perform registration logic here
       //console.log(this.name + ' ' + this.email)

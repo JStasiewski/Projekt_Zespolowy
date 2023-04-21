@@ -5,20 +5,28 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-<div class = "nav_bar" key=App.>
+<nav>
+  <div class = "nav_barTOP" key=App.>
     <div class = "page_title">
-      <RouterLink to="/"><img src="https://fontmeme.com/permalink/230403/7dbbbbca39b455368c8a7915a5b8e418.png" alt="guild-wars-2-font" border="0"></RouterLink>
+      <RouterLink to="/" class = "home_Link" >GW2 Assistant</RouterLink>
     </div>
     <div v-if="!isLogged" class="nav_acc_info">
       <p>Welcome guest</p>
-
+      <RouterLink to="/login" class="lrnav">Login</RouterLink>
+      <RouterLink to="/register" class="lrnav">Create Account</RouterLink>
     </div>
     <div class="nav_acc_info" v-else> 
       <p>Welcome, {{auth.currentUser?.email}}</p>
+      <RouterLink to="/accinfo"><div>Account</div></RouterLink>
       <RouterLink @click.prevent="logoutNaV" to="/login">Logout</RouterLink>
+      
       <!-- <button @click="logoutNaV">Logout</button> -->
     </div>
   </div>
+  <div class = "nav_barBOTTOM">
+    <RouterLink to="/crafting" class="L_body_elem">Crafting</RouterLink>
+  </div>
+</nav>
   </template>
 
   <script lang="ts">
@@ -38,3 +46,7 @@ import { RouterLink } from 'vue-router'
       }
     }
   </script>
+
+<style scoped src="./nav.css">
+</style>
+

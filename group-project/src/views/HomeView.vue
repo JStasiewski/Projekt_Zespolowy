@@ -10,15 +10,9 @@ import Nav_bar from './Nav_bar.vue'
   
 <div class="Home_body">
   <div v-if="auth.currentUser==null" class="Home_body_L">
-    <RouterLink to="/login" class="L_body_elem">Login</RouterLink>
-    <RouterLink to="/register" class="L_body_elem">Create Account</RouterLink>
+  
   </div>
   <div v-else class="Home_body_L" >
-    <RouterLink to="/crafting" class="L_body_elem">Crafting</RouterLink>
-  </div>
-
-  <div class="Home_body_R">
-      Some image
   </div>
 </div>
 </template>

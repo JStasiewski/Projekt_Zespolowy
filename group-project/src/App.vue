@@ -1,12 +1,8 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import { database } from './firebase'
-import { auth } from './firebase'
 import { collection , addDoc } from 'firebase/firestore'
-import LoginView from './views/LoginView.vue';
-import router from './router';
 import Nav_bar from './views/Nav_bar.vue';
-import { getCurrentInstance } from 'vue';
 
 </script>
 
