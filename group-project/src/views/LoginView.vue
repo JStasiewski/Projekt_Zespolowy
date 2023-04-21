@@ -2,13 +2,9 @@
 import { RouterLink } from 'vue-router'
 import { auth } from '../firebase'
 import { signInWithEmailAndPassword } from 'firebase/auth'
-import Nav_bar from './Nav_bar.vue';
-import App from '../App.vue'
 </script>
 
 <template>
-
-  <!-- <Nav_bar/> -->
 
  <div class="login_body">
     <label class="login_elem">
@@ -71,8 +67,6 @@ export default {
 </script>
 
 <style>
-
-@import './nav.css';
 
 @media (min-width: 1024px) {
   .about {
