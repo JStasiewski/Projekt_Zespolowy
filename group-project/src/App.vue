@@ -1,69 +1,61 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
+import { database } from './firebase'
+import { collection , addDoc } from 'firebase/firestore'
+import Nav_bar from './views/Nav_bar.vue';
+
 </script>
 
+
+
 <template>
-  <RouterView />
+  <Nav_bar :isLogged = "IsLoggedIn" @lOGOUT="logOut"/>
+  <RouterView @updateNav="logIn"/>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .wrapper {
-    display: flex;
-    flex-direction: column;
-    place-items: flex-start;
-    width: 100%;
-    /* flex-wrap: wrap; */
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
+@import './views/nav.css';
 </style>
+
+<script lang="ts">
+
+export default {
+  methods: {
+    async createUser(email_n:string, nname: string){
+        const collectRef = collection(database,'Users')
+        const data = {
+          email: email_n,
+          name: nname
+        }
+        // dodawanie do bazy
+
+        const ref = await addDoc(collectRef, data)
+        console.log(" ref ",ref.id)
+    },
+    logOut(){
+        console.log(this.IsLoggedIn);
+        this.IsLoggedIn = false;
+        console.log(this.IsLoggedIn);
+      },
+    logIn(){
+      console.log(this.IsLoggedIn);
+      this.IsLoggedIn = true;
+      console.log(this.IsLoggedIn);
+
+    },
+    forceRefresh(){
+
+    },
+    getIsLoggedIn(): boolean{
+      
+      return this.IsLoggedIn;
+    }
+  },
+  data() {
+    return{
+      IsLoggedIn: false,
+    };
+  }
+}
+
+</script>

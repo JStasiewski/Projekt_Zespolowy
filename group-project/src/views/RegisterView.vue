@@ -5,26 +5,29 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
 </script>
 
 <template>
-  <form>
-    <label>
+
+  <form class="reg_body">
+    <label class="reg_elem">
       Name:
       <input type="text" v-model="name" required />
     </label>
 
-    <label>
+    <label class="reg_elem">
       Email:
       <input type="email" v-model="email" required />
     </label>
 
-    <label>
+    <label class="reg_elem">
       Password:
       <input type="password" v-model="password" required />
     </label>
 
-    <button type="submit" @click.prevent="register">Register</button>
+    <button type="submit" class="reg_elem" @click.prevent="register">Register</button>
   </form>
+  <div class="reg_elem_" style="align-items: center;">
   <span>Already have an account? </span>
   <RouterLink to="/login">Login here!</RouterLink>
+  </div>
 </template>
 
 <script lang="ts">
@@ -33,7 +36,8 @@ export default {
     return {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      renterCount: ''
     }
   },
   methods: {
@@ -41,7 +45,7 @@ export default {
       // perform registration logic here
       //console.log(this.name + ' ' + this.email)
       const res = await createUserWithEmailAndPassword(auth, this.email, this.password)
-        .then(() => {
+        .then(( ) => {
           // Sign-out successful.
           console.log('SUCCES!!!')
           this.$router.push('/')
@@ -55,11 +59,29 @@ export default {
 </script>
 
 <style>
+ @import './nav.css';
 @media (min-width: 1024px) {
   .about {
     min-height: 100vh;
     display: flex;
     align-items: center;
   }
+}
+
+.reg_body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reg_elem_{
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reg_elem{
+  margin-top: 25px;
 }
 </style>

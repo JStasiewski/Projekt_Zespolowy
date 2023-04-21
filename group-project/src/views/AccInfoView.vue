@@ -2,13 +2,11 @@
 </script>
 
 <template>
-
-<!-- <Nav_bar /> -->
-
   <div>
-    <h1>This is Crafting helper</h1>
+    <h1>This is Account info page</h1>
   </div>
 </template>
 
 <style>
+
 </style>
