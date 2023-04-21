@@ -31,8 +31,6 @@ import { RouterLink } from 'vue-router'
 
   <script lang="ts">
 
-  import App from '../App.vue'
-
     export default {
       methods:{
         logoutNaV(){
