@@ -48,6 +48,7 @@ export default {
         .then(( ) => {
           // Sign-out successful.
           console.log('SUCCES!!!')
+          this.$emit('NEWUSER',this.email)
           this.$router.push('/')
         })
         .catch((error) => {

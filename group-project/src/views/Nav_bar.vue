@@ -6,7 +6,7 @@ import { RouterLink } from 'vue-router'
 
 <template>
 <nav>
-  <div class = "nav_barTOP" key=App.>
+  <div class = "nav_barTOP" >
     <div class = "page_title">
       <RouterLink to="/" class = "home_Link" >GW2 Assistant</RouterLink>
     </div>
@@ -17,7 +17,7 @@ import { RouterLink } from 'vue-router'
     </div>
     <div class="nav_acc_info" v-else> 
       <p>Welcome, {{auth.currentUser?.email}}</p>
-      <RouterLink to="/accinfo"><div>Account</div></RouterLink>
+      <RouterLink to="/accinfo/"><div>Account</div></RouterLink>
       <RouterLink @click.prevent="logoutNaV" to="/login">Logout</RouterLink>
       
       <!-- <button @click="logoutNaV">Logout</button> -->
