@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import {auth} from '../firebase'
 import {} from '../App.vue'
-import Nav_bar from './Nav_bar.vue'
 </script>
 
 <template>
-
-<!-- <Nav_bar/> -->
   
 <div class="Home_body">
   <div v-if="auth.currentUser==null" class="Home_body_L">

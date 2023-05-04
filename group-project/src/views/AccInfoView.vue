@@ -1,14 +1,14 @@
 <script setup lang="ts">
-
+import CharacterView from './AccInfoComponents/CharacterView.vue';
 
 
 </script>
 
 <template>
   <main calss = "accInfoMain" >
-    <div v-if="ApiKey != ''">
+    <div v-if="ApiKey !== ''">
       <div class = "accInfoElem">
-        Api Key I have
+        <CharacterView :ApiKey = "ApiKey"/>
       </div>
     </div>
     <div class = "ApiInfoElem">
@@ -16,8 +16,8 @@
       <p class = "ApiSubElem" v-if="ApiKey != ''">{{ApiKey}}</p>
       <p class = "ApiSubElem" v-else>You didnt add youre api key!</p>
       <input v-model="CurrentApiKey" placeholder="Copy youre GW2 Api-Key here" class = "ApiInput"/>
-      <button type="submit" @click.prevent="passAPIinfo" class = "ApiButton">Change Api-Key</button>
-      <button type="submit" @click.prevent="deleteApiKey" class = "ApiButton">Delete Api-Key</button>
+      <button  @click="passAPIinfo" class = "ApiButton">Change Api-Key</button>
+      <button  @click="deleteApiKey" class = "ApiButton">Delete Api-Key</button>
     </div>
     
 </main>
@@ -36,10 +36,14 @@
     },
     methods:{
       async passAPIinfo(){
-        await this.$emit("swapApi",this.CurrentApiKey)
+        this.$emit("swapApi",this.CurrentApiKey)
+        this.$emit("swapApi",this.CurrentApiKey)
+        this.CurrentApiKey = "";
       },
       async deleteApiKey(){
-        await this.$emit("swapApi","!")
+        this.$emit("swapApi","!")
+        this.$emit("swapApi","!")
+        
       }
     }
   }

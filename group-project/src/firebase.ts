@@ -32,6 +32,7 @@ export async function addUser(apiKey:string, uid:string) {
   const pom = await getDoc( doc(usersCollection,uid))
   if(pom.exists()){
     apiK = pom.data()['value']
+    console.log("apiK")
   }
   
   }catch{

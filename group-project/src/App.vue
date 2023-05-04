@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import { auth, getUserApiK , addUser } from './firebase'
-import { collection , addDoc } from 'firebase/firestore'
 import Nav_bar from './views/Nav_bar.vue'
-import { getDatabase, ref, set } from "firebase/database"
 import axios from "axios"
-
+import {getCurrentInstance} from 'vue'
 
 
 </script>
@@ -14,7 +12,7 @@ import axios from "axios"
 
 <template>
   <Nav_bar :isLogged = "IsLoggedIn" @lOGOUT="logOut"/>
-  <RouterView :isLogged = "IsLoggedIn" @updateNav="logIn"  :ApiKey = "UserApiKey"  @swapApi="SetUserAPI"/>
+  <RouterView @render="rerenderAPP" :isLogged = "IsLoggedIn" @updateNav="logIn"  :ApiKey = "UserApiKey"  @swapApi="SetUserAPI"/>
 </template>
 
 <style scoped>
@@ -23,17 +21,22 @@ import axios from "axios"
 
 <script lang="ts">
 
+export const rerenderAPP = () =>{
+      const instance = getCurrentInstance();
+      instance?.proxy?.$forceUpdate();
+      console.log(instance)
+    }
+
 export default {
   methods: {
     async SetUserAPI(newApiKey:string){
-      if (auth.currentUser?.uid){
+      if (auth.currentUser?.uid !== undefined){
         if(newApiKey === "!"){
           await addUser("",auth.currentUser?.uid);
         }
         else if( await this.isFalideApiK(newApiKey)){
           await addUser(newApiKey,auth.currentUser?.uid);
         }
-        if(auth.currentUser?.uid)
         this.UserApiKey = await getUserApiK(auth.currentUser?.uid);
       }else{
         console.log("api key not haha")
@@ -47,15 +50,17 @@ export default {
     logOut(){
       console.log(this.IsLoggedIn);
       this.IsLoggedIn = false;
+      this.UserApiKey = ""
       console.log(this.IsLoggedIn);
+      rerenderAPP();
     },
     async logIn(){
-      let pom;
       console.log(this.IsLoggedIn);
       this.IsLoggedIn = true;
       if(auth.currentUser?.uid)
         this.UserApiKey = await getUserApiK(auth.currentUser?.uid)
       console.log(this.IsLoggedIn);
+      rerenderAPP();
     },
     getIsLoggedIn(): boolean{
       return this.IsLoggedIn;
@@ -70,6 +75,7 @@ export default {
       }
       
     }
+
   },
   data() {
     return{
@@ -79,6 +85,7 @@ export default {
   }
 }
 
+export const BaseURL = "https://api.guildwars2.com/v2/"
 </script>
 <!-- Z tego rozszerzenia łatwiej będzie operwać firebase -->
 <!-- https://vuefire.vuejs.org/guide/realtime-data.html -->

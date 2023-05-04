@@ -18,7 +18,7 @@ import { RouterLink } from 'vue-router'
     <div class="nav_acc_info" v-else> 
       <p>Welcome, {{auth.currentUser?.email}}</p>
       <RouterLink to="/accinfo/"><div>Account</div></RouterLink>
-      <RouterLink @click.prevent="logoutNaV" to="/login">Logout</RouterLink>
+      <RouterLink @click="logoutNaV" to="/">Logout</RouterLink>
       
       <!-- <button @click="logoutNaV">Logout</button> -->
     </div>
