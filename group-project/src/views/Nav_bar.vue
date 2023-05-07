@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { auth } from '../firebase'
+import { auth, userName } from '../firebase'
 import { RouterLink } from 'vue-router'
 
 </script>
 
 <template>
 <nav>
-  <div class = "nav_barTOP" >
+  <div class = "nav_barTOP" key=App.>
     <div class = "page_title">
       <RouterLink to="/" class = "home_Link" >GW2 Assistant</RouterLink>
     </div>
@@ -16,9 +16,10 @@ import { RouterLink } from 'vue-router'
       <RouterLink to="/register" class="lrnav">Create Account</RouterLink>
     </div>
     <div class="nav_acc_info" v-else> 
-      <p>Welcome, {{auth.currentUser?.email}}</p>
-      <RouterLink to="/accinfo/"><div>Account</div></RouterLink>
-      <RouterLink @click="logoutNaV" to="/">Logout</RouterLink>
+      <!-- <p>Welcome, {{auth.currentUser?.email}}</p> -->
+      <p>Welcome, {{userName}}</p>
+      <RouterLink to="/accinfo"><div>Account</div></RouterLink>
+      <RouterLink @click.prevent="logoutNaV" to="/login">Logout</RouterLink>
       
       <!-- <button @click="logoutNaV">Logout</button> -->
     </div>

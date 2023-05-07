@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import { auth } from '../firebase'
+import { auth, database, setUserName ,userName} from '../firebase'
 import { signInWithEmailAndPassword } from 'firebase/auth'
+import { doc, getDoc } from '@firebase/firestore';
 </script>
 
 <template>
@@ -46,6 +47,7 @@ export default {
     async login() {
       // perform login logic here
       //console.log(this.email + ' ' + this.password)
+      
       await signInWithEmailAndPassword(auth, this.email, this.password)
         .then(() => {
           // Sign-out successful.
@@ -53,9 +55,16 @@ export default {
           console.log(auth.currentUser)
           this.suc = true;
           //App.methods?.logIn()
+          const uid = auth.currentUser?.uid.toString()
+          const userDocRef = doc(database, 'users',uid);
+          getDoc(userDocRef).then((doc)=>{
+            setUserName(doc.data().name.toString());
+            console.log("duopaduoa   " + userName)
+          })
         })
         .catch((error) => {
           console.log('ERROR!!!') // An error happened.
+          console.log(error) // An error happened.
         })
         if(this.suc){
           this.sendEmit()

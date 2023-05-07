@@ -2,7 +2,7 @@
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 import type { Firestore } from 'firebase/firestore'
-import { getFirestore, collection,doc,updateDoc,getDoc} from 'firebase/firestore/lite'
+import { getFirestore, collection,doc,updateDoc,getDoc} from 'firebase/firestore'
 
 
 const firebaseConfig = {
@@ -17,8 +17,13 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig)
 export const auth = getAuth()
-export const database = getFirestore(app)
+export const database = getFirestore()
 export const usersCollection = collection(database, 'users');
+export let userName = '';
+export const setUserName = (name) => {
+  userName = name;
+  console.log(userName)
+}
 
 
 export async function addUser(apiKey:string, uid:string) {
@@ -26,7 +31,7 @@ export async function addUser(apiKey:string, uid:string) {
   await updateDoc(customDock,{value: apiKey})
 }
 
- export async function getUserApiK(uid:string) {
+export async function getUserApiK(uid:string) {
   let apiK;
   try{
   const pom = await getDoc( doc(usersCollection,uid))

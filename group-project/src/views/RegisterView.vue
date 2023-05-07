@@ -2,7 +2,7 @@
 import { RouterLink } from 'vue-router'
 import { auth, database } from '../firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { doc, getDoc, setDoc } from 'firebase/firestore/lite'
+import { doc, getDoc, setDoc } from 'firebase/firestore'
 </script>
 
 <template>
@@ -48,7 +48,7 @@ export default {
     const { user } = await createUserWithEmailAndPassword(auth, this.email, this.password)
     
     // Set user doc in users collection
-    const userDocRef = doc(database,"users", user.uid)
+    const userDocRef = doc(database,'users', user.uid)
     await setDoc(userDocRef, { name: this.name, email: this.email })
     
     // Redirect to home page
