@@ -50,6 +50,7 @@ export default {
         .then(() => {
           // Sign-out successful.
           console.log('SUCCES!!!')
+          console.log(auth.currentUser)
           this.suc = true;
           //App.methods?.logIn()
         })

@@ -2,7 +2,7 @@
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 import type { Firestore } from 'firebase/firestore'
-import { getFirestore, collection,doc,setDoc,getDoc} from 'firebase/firestore/lite'
+import { getFirestore, collection,doc,updateDoc,getDoc} from 'firebase/firestore/lite'
 
 
 const firebaseConfig = {
@@ -23,7 +23,7 @@ export const usersCollection = collection(database, 'users');
 
 export async function addUser(apiKey:string, uid:string) {
   const customDock = doc(usersCollection,uid)
-  setDoc(customDock,{value: apiKey})
+  await updateDoc(customDock,{value: apiKey})
 }
 
  export async function getUserApiK(uid:string) {

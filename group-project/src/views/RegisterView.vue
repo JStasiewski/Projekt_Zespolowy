@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import { auth } from '../firebase'
+import { auth, database } from '../firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { doc, getDoc, setDoc } from 'firebase/firestore/lite'
 </script>
 
 <template>
@@ -42,19 +43,21 @@ export default {
   },
   methods: {
     async register() {
-      // perform registration logic here
-      //console.log(this.name + ' ' + this.email)
-      const res = await createUserWithEmailAndPassword(auth, this.email, this.password)
-        .then(( ) => {
-          // Sign-out successful.
-          console.log('SUCCES!!!')
-          this.$emit('NEWUSER',this.email)
-          this.$router.push('/')
-        })
-        .catch((error) => {
-          console.log('ERROR!!!') // An error happened.
-        })
-    }
+  try {
+    // Register user
+    const { user } = await createUserWithEmailAndPassword(auth, this.email, this.password)
+    
+    // Set user doc in users collection
+    const userDocRef = doc(database,"users", user.uid)
+    await setDoc(userDocRef, { name: this.name, email: this.email })
+    
+    // Redirect to home page
+    this.$router.push('/')
+  } catch (error) {
+    console.log(error)
+  }
+}
+
   }
 }
 </script>
