@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import axios from "axios"
 import { BaseURL } from "@/App.vue";
-import {rerenderAPP} from "../../App.vue"
-import { getCurrentInstance } from "vue";
-import { ref } from 'vue';
+
 </script>
 
 <template>
@@ -12,7 +10,8 @@ import { ref } from 'vue';
         {{pom}}
     </p> -->
   <div v-for="champion in CHAMPS">
-    <p>{{champion.name}} is a {{ champion.race }}</p>
+    <p>{{champion.name}} is a {{champion.sex}} {{ champion.race }}</p>
+    <p>{{champion.lvl}}lvl {{champion.prof}} </p>
   </div>
 </template>
 
@@ -45,9 +44,19 @@ export default {
                         axios
                             .request(options)
                             .then((rep) =>{
+                                let pomage = rep.data.age;
+                                let sec,min,hour,day = 0;
+                                //while(pomage >= 60*60*24){
+
+                                //}
                                 this.CHAMPS.push({
                                     name: rep.data.name,
                                     race: rep.data.race,
+                                    sex: rep.data.gender,
+                                    prof: rep.data.profession,
+                                    lvl: rep.data.level,
+                                    age: rep.data.age,
+                                    titleid: rep.data.title,
                                 })
                             })
                     });
@@ -65,6 +74,11 @@ export default {
             CHAMPS: [{
                 name: "",
                 race: "",
+                sex: "",
+                prof: "",
+                lvl: 0,
+                age: [0,0,0,0],
+                titleid: 0,
             }],
             pom: "",
         };
