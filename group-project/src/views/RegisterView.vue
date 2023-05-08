@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import { auth, database } from '../firebase'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { auth, database, userName, setUserName } from '../firebase'
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { doc, getDoc, setDoc } from 'firebase/firestore'
 </script>
 
 <template>
-
   <form class="reg_body">
     <label class="reg_elem">
       Name:
@@ -25,9 +24,9 @@ import { doc, getDoc, setDoc } from 'firebase/firestore'
 
     <button type="submit" class="reg_elem" @click.prevent="register">Register</button>
   </form>
-  <div class="reg_elem_" style="align-items: center;">
-  <span>Already have an account? </span>
-  <RouterLink to="/login">Login here!</RouterLink>
+  <div class="reg_elem_" style="align-items: center">
+    <span>Already have an account? </span>
+    <RouterLink to="/login">Login here!</RouterLink>
   </div>
 </template>
 
@@ -43,27 +42,36 @@ export default {
   },
   methods: {
     async register() {
-  try {
-    // Register user
-    const { user } = await createUserWithEmailAndPassword(auth, this.email, this.password)
-    
-    // Set user doc in users collection
-    const userDocRef = doc(database,'users', user.uid)
-    await setDoc(userDocRef, { name: this.name, email: this.email })
-    
-    // Redirect to home page
-    this.$router.push('/')
-  } catch (error) {
-    console.log(error)
-  }
-}
+      try {
+        // Register user
+        const { user } = await createUserWithEmailAndPassword(auth, this.email, this.password)
 
+        // Set user doc in users collection
+        const userDocRef = doc(database, 'users', user.uid)
+        await setDoc(userDocRef, { name: this.name, email: this.email })
+
+        getDoc(userDocRef)
+          .then((doc) => {
+            setUserName(doc.data().name.toString())
+            console.log('duopaduoa   ' + userName)
+            updateProfile(auth.currentUser, { displayName: userName })
+          })
+          .catch((error) => {
+            // An error occurred
+          })
+
+        // Redirect to home page
+        this.$router.push('/')
+      } catch (error) {
+        console.log(error)
+      }
+    }
   }
 }
 </script>
 
 <style>
- @import './nav.css';
+@import './nav.css';
 @media (min-width: 1024px) {
   .about {
     min-height: 100vh;
@@ -72,20 +80,20 @@ export default {
   }
 }
 
-.reg_body{
+.reg_body {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.reg_elem_{
+.reg_elem_ {
   margin-top: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.reg_elem{
+.reg_elem {
   margin-top: 25px;
 }
 </style>
