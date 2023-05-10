@@ -9,10 +9,90 @@ import { BaseURL } from "@/App.vue";
     <p>
         {{pom}}
     </p> -->
-  <div v-for="champion in CHAMPS">
-    <p>{{champion.name}} is a {{champion.sex}} {{ champion.race }}</p>
-    <p>{{champion.lvl}}lvl {{champion.prof}} </p>
-  </div>
+    <main class = "champion_holder">
+    <div v-for="champion in CHAMPS">
+        <div v-if="champion.prof == 'Guardian'" class = "champion_displayG">
+            <div class = "champion_displayL">
+                <p class = "championinfo">{{champion.name}} is a {{champion.sex}} {{ champion.race }}</p>
+                <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
+            </div>
+            <div class = "champion_displayR">
+            </div>
+        </div>
+        <div v-else-if="champion.prof == 'Mesmer'" class = "champion_displayM">
+            <div class = "champion_displayL">
+                <p class = "championinfo">{{champion.name}} is a {{champion.sex}} {{ champion.race }}</p>
+                <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
+            </div>
+            <div class = "champion_displayR">
+            </div>
+        </div>
+        <div v-else-if="champion.prof == 'Engineer'" class = "champion_displayE">
+            <div class = "champion_displayL">
+                <p class = "championinfo">{{champion.name}} is a {{champion.sex}} {{ champion.race }}</p>
+                <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
+            </div>
+            <div class = "champion_displayR">
+            </div>
+        </div>
+        <div v-else-if="champion.prof == 'Ranger'" class = "champion_displayRen">
+            <div class = "champion_displayL">
+                <p class = "championinfo">{{champion.name}} is a {{champion.sex}} {{ champion.race }}</p>
+                <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
+            </div>
+            <div class = "champion_displayR">
+            </div>
+        </div>
+        <div v-else-if="champion.prof == 'Revenant'" class = "champion_displayRev">
+            <div class = "champion_displayL">
+                <p class = "championinfo">{{champion.name}} is a {{champion.sex}} {{ champion.race }}</p>
+                <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
+            </div>
+            <div class = "champion_displayR">
+            </div>
+        </div>
+        <div v-else-if="champion.prof == 'Warrior'" class = "champion_displayW">
+            <div class = "champion_displayL">
+                <p class = "championinfo">{{champion.name}} is a {{champion.sex}} {{ champion.race }}</p>
+                <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
+            </div>
+            <div class = "champion_displayR">
+            </div>
+        </div>
+        <div v-else-if="champion.prof == 'Elementalist'" class = "champion_displayEle">
+            <div class = "champion_displayL">
+                <p class = "championinfo">{{champion.name}} is a {{champion.sex}} {{ champion.race }}</p>
+                <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
+            </div>
+            <div class = "champion_displayR">
+            </div>
+        </div>
+        <div v-else-if="champion.prof == 'Necromancer'" class = "champion_displayN">
+            <div class = "champion_displayL">
+                <p class = "championinfo">{{champion.name}} is a {{champion.sex}} {{ champion.race }}</p>
+                <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
+            </div>
+            <div class = "champion_displayR">
+            </div>
+        </div>
+        <div v-else-if="champion.prof == 'Thief'" class = "champion_displayT">
+            <div class = "champion_displayL">
+                <p class = "championinfo">{{champion.name}} is a {{champion.sex}} {{ champion.race }}</p>
+                <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
+            </div>
+            <div class = "champion_displayR">
+            </div>
+        </div>
+        <div v-else class = "champion_display">
+            <div class = "champion_displayL">
+                <p class = "championinfo">{{champion.name}} is a {{champion.sex}} {{ champion.race }}</p>
+                <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
+            </div>
+            <div class = "champion_displayR">
+            </div>
+        </div>
+    </div>
+    </main>
 </template>
 
 <script lang="ts">
@@ -25,9 +105,6 @@ export default {
             this.CHAMPS = [];
             await this.getNames();
             console.log(this.CHAMPS);
-        },
-        async setChampsData(Names:[string]){
-
         },
         async getNames(){
             var options = {
@@ -44,19 +121,14 @@ export default {
                         axios
                             .request(options)
                             .then((rep) =>{
-                                let pomage = rep.data.age;
-                                let sec,min,hour,day = 0;
-                                //while(pomage >= 60*60*24){
-
-                                //}
+                                //let pomage = rep.data.age;
+                                //let sec,min,hour,day = 0;
                                 this.CHAMPS.push({
                                     name: rep.data.name,
                                     race: rep.data.race,
                                     sex: rep.data.gender,
                                     prof: rep.data.profession,
                                     lvl: rep.data.level,
-                                    age: rep.data.age,
-                                    titleid: rep.data.title,
                                 })
                             })
                     });
@@ -77,8 +149,6 @@ export default {
                 sex: "",
                 prof: "",
                 lvl: 0,
-                age: [0,0,0,0],
-                titleid: 0,
             }],
             pom: "",
         };
@@ -92,5 +162,6 @@ export default {
 
 </script>
 
-<style>
+<style scoped src="./CharacterStyle.css">
+
 </style>

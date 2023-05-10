@@ -20,7 +20,7 @@ export const auth = getAuth()
 export const database = getFirestore()
 export const usersCollection = collection(database, 'users');
 export let userName = '';
-export const setUserName = (name) => {
+export const setUserName = (name:string) => {
   userName = name;
   console.log(userName)
 }

@@ -16,8 +16,10 @@ import CharacterView from './AccInfoComponents/CharacterView.vue';
       <p class = "ApiSubElem" v-if="ApiKey != ''">{{ApiKey}}</p>
       <p class = "ApiSubElem" v-else>You didnt add youre api key!</p>
       <input v-model="CurrentApiKey" placeholder="Copy youre GW2 Api-Key here" class = "ApiInput"/>
-      <button  @click="passAPIinfo" class = "ApiButton">Change Api-Key</button>
-      <button  @click="deleteApiKey" class = "ApiButton">Delete Api-Key</button>
+      <div class = "holderApiButtonChange">
+        <button  @click="passAPIinfo" class = "ApiButton">Change Api-Key</button>
+        <button  @click="deleteApiKey" class = "ApiButton">Delete Api-Key</button>
+      </div>
     </div>
     
 </main>
@@ -51,6 +53,13 @@ import CharacterView from './AccInfoComponents/CharacterView.vue';
 
 <style>
 
+.holderApiButtonChange{
+  display: flex;
+  flex-direction: row ;
+  width:750px;
+  justify-content: space-evenly;
+}
+
 .accInfoMain{
   display: flex;
   flex-direction: row;
@@ -60,7 +69,6 @@ import CharacterView from './AccInfoComponents/CharacterView.vue';
 
 .accInfoElem{
   margin: 10px 0;
-  width: fit-content;
 }
 
 .ApiInfoElem{
@@ -90,5 +98,6 @@ import CharacterView from './AccInfoComponents/CharacterView.vue';
  font-size: larger;
  width: 100px;
  height: 50px;
+  flex: 1;
 }
 </style>
