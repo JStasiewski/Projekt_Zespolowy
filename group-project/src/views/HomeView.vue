@@ -1,17 +1,13 @@
 <script setup lang="ts">
-import {auth} from '../firebase'
+import DailyAchigments from './DailyAch/DailyAchigments.vue';
 import {} from '../App.vue'
 </script>
 
 <template>
   
-<div class="Home_body">
-  <div v-if="auth.currentUser==null" class="Home_body_L">
-  
+  <div class="Home_body">
+    <DailyAchigments/>
   </div>
-  <div v-else class="Home_body_L" >
-  </div>
-</div>
 </template>
 
 <script lang="ts">
@@ -22,17 +18,12 @@ export default {
     }
   },
   methods: {
-    async logout() {
-      await auth.signOut()
-      this.renterCount = " "
-    }
   }
 }
     
 </script>
 
 <style>
- @import './nav.css';
 .L_body_elem{
   color: black;
   width: auto;
