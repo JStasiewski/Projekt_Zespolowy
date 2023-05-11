@@ -45,6 +45,7 @@ export default {
 
 
  .Home_body{
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
 }

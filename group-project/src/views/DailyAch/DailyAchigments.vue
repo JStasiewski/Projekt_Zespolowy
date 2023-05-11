@@ -5,7 +5,18 @@ import axios from 'axios';
 </script>
 
 <template>
-
+    <ol class = "list_of_pve_ach" v-for="achigment in pveDaily" :key="achigment.name">
+        <p>{{ achigment.name }}</p>
+        <p>{{ achigment.what_to_do }}</p>
+        <p>{{ achigment.how_much }}</p>
+        <p>{{ achigment.rewardsCoin.count }}</p>
+        <ol v-for="item in achigment.rewardsItems" :key="item.name">
+            <p>{{ item.name }}</p>
+            <p>{{ item.count }}</p>
+            <img :src = "item.iconLink">
+            <a :href="item.wikiLink"> link to wiki</a>
+        </ol>
+    </ol>
 </template>
 
 <script lang="ts">
@@ -18,9 +29,10 @@ export default {
             what_to_do: String,
             how_much: Number,
             rewardsItems: [{
-                id: Number,
+                iconLink: String,
                 count: Number,
-                wikiLink: String
+                wikiLink: String,
+                name: String
             }],
             rewardsCoin: {
                 count: Number
@@ -106,7 +118,7 @@ export default {
     
 </script>
 
-<style>
+<style scoped src="./DailyAch.css">
 
 
 </style>
