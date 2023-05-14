@@ -1,5 +1,36 @@
-.list_of_pve_ach{
+.ach_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.list_of_pve_ach {
     border-style: solid;
     border-width: 5px;
     flex: 1;
+    margin: 2px;
+    padding: 2px;
+}
+
+.pve_container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .pve_container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 966px) {
+    .pve_container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 1222px) {
+    .pve_container {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
