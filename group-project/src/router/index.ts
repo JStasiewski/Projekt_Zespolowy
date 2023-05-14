@@ -4,6 +4,7 @@ import RegisterView from '../views/RegisterView.vue'
 import LoginView from '../views/LoginView.vue'
 import CraftingView from '../views/GameView.vue'
 import AccountInfoView from '../views/AccInfoView.vue'
+import CharInfo from '../views/AccInfoComponents/Charinfo.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,7 +33,14 @@ const router = createRouter({
       path:'/accinfo',
       name: 'accinfo',
       component: AccountInfoView
+    },
+    {
+      path:'/accinfo/charinfo',
+      name: 'charinfo',
+      component: CharInfo,
+      props: { myProp: 'myValue' }
     }
+    
   ]
 })
 

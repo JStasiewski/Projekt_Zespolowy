@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import axios from "axios"
 import { BaseURL } from "@/App.vue";
+import { RouterLink } from 'vue-router'
+
 
 </script>
 
@@ -17,6 +19,7 @@ import { BaseURL } from "@/App.vue";
                 <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
             </div>
             <div class = "champion_displayR">
+                <RouterLink to="/accinfo/charinfo">See details</RouterLink>
             </div>
         </div>
         <div v-else-if="champion.prof == 'Mesmer'" class = "champion_displayM">
@@ -25,6 +28,7 @@ import { BaseURL } from "@/App.vue";
                 <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
             </div>
             <div class = "champion_displayR">
+                <RouterLink to="/accinfo/charinfo">See details</RouterLink>
             </div>
         </div>
         <div v-else-if="champion.prof == 'Engineer'" class = "champion_displayE">
@@ -33,6 +37,7 @@ import { BaseURL } from "@/App.vue";
                 <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
             </div>
             <div class = "champion_displayR">
+                <RouterLink to="/accinfo/charinfo">See details</RouterLink>
             </div>
         </div>
         <div v-else-if="champion.prof == 'Ranger'" class = "champion_displayRen">
@@ -41,6 +46,7 @@ import { BaseURL } from "@/App.vue";
                 <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
             </div>
             <div class = "champion_displayR">
+                <RouterLink to="/accinfo/charinfo">See details</RouterLink>
             </div>
         </div>
         <div v-else-if="champion.prof == 'Revenant'" class = "champion_displayRev">
@@ -49,6 +55,7 @@ import { BaseURL } from "@/App.vue";
                 <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
             </div>
             <div class = "champion_displayR">
+                <RouterLink to="/accinfo/charinfo">See details</RouterLink>
             </div>
         </div>
         <div v-else-if="champion.prof == 'Warrior'" class = "champion_displayW">
@@ -57,6 +64,7 @@ import { BaseURL } from "@/App.vue";
                 <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
             </div>
             <div class = "champion_displayR">
+                <RouterLink to="/accinfo/charinfo">See details</RouterLink>
             </div>
         </div>
         <div v-else-if="champion.prof == 'Elementalist'" class = "champion_displayEle">
@@ -65,6 +73,7 @@ import { BaseURL } from "@/App.vue";
                 <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
             </div>
             <div class = "champion_displayR">
+                <RouterLink to="/accinfo/charinfo">See details</RouterLink>
             </div>
         </div>
         <div v-else-if="champion.prof == 'Necromancer'" class = "champion_displayN">
@@ -73,6 +82,7 @@ import { BaseURL } from "@/App.vue";
                 <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
             </div>
             <div class = "champion_displayR">
+                <RouterLink to="/accinfo/charinfo">See details</RouterLink>
             </div>
         </div>
         <div v-else-if="champion.prof == 'Thief'" class = "champion_displayT">
@@ -81,6 +91,7 @@ import { BaseURL } from "@/App.vue";
                 <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
             </div>
             <div class = "champion_displayR">
+                <RouterLink to="/accinfo/charinfo">See details</RouterLink>
             </div>
         </div>
         <div v-else class = "champion_display">
@@ -89,6 +100,7 @@ import { BaseURL } from "@/App.vue";
                 <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
             </div>
             <div class = "champion_displayR">
+                <RouterLink to="/accinfo/charinfo">See details</RouterLink>
             </div>
         </div>
     </div>
@@ -161,6 +173,7 @@ export default {
 }
 
 </script>
+
 
 <style scoped src="./CharacterStyle.css">
 

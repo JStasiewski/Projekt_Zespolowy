@@ -7,7 +7,7 @@ import CharacterView from './AccInfoComponents/CharacterView.vue';
 <template>
   <main calss = "accInfoMain" >
     <div v-if="ApiKey !== ''">
-      <div class = "accInfoElem">
+      <div class = "accInfoElem">   
         <CharacterView :ApiKey = "ApiKey"/>
       </div>
     </div>
