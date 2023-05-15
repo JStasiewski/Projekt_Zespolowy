@@ -2,6 +2,7 @@
 import axios from "axios"
 import { BaseURL } from "@/App.vue";
 import { RouterLink } from 'vue-router'
+import CharInfo from '../AccInfoComponents/Charinfo.vue'
 
 
 </script>
@@ -19,7 +20,7 @@ import { RouterLink } from 'vue-router'
                 <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
             </div>
             <div class = "champion_displayR">
-                <RouterLink to="/accinfo/charinfo">See details</RouterLink>
+                <button @click="toggleComponent">See details {{ showComponent ? 'Hide' : 'Show' }}</button>
             </div>
         </div>
         <div v-else-if="champion.prof == 'Mesmer'" class = "champion_displayM">
@@ -28,7 +29,7 @@ import { RouterLink } from 'vue-router'
                 <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
             </div>
             <div class = "champion_displayR">
-                <RouterLink to="/accinfo/charinfo">See details</RouterLink>
+                <button @click="toggleComponent">See details {{ showComponent ? 'Hide' : 'Show' }}</button>
             </div>
         </div>
         <div v-else-if="champion.prof == 'Engineer'" class = "champion_displayE">
@@ -37,7 +38,7 @@ import { RouterLink } from 'vue-router'
                 <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
             </div>
             <div class = "champion_displayR">
-                <RouterLink to="/accinfo/charinfo">See details</RouterLink>
+                <button @click="toggleComponent">See details {{ showComponent ? 'Hide' : 'Show' }}</button>
             </div>
         </div>
         <div v-else-if="champion.prof == 'Ranger'" class = "champion_displayRen">
@@ -46,7 +47,7 @@ import { RouterLink } from 'vue-router'
                 <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
             </div>
             <div class = "champion_displayR">
-                <RouterLink to="/accinfo/charinfo">See details</RouterLink>
+                <button @click="toggleComponent">See details {{ showComponent ? 'Hide' : 'Show' }}</button>
             </div>
         </div>
         <div v-else-if="champion.prof == 'Revenant'" class = "champion_displayRev">
@@ -55,7 +56,7 @@ import { RouterLink } from 'vue-router'
                 <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
             </div>
             <div class = "champion_displayR">
-                <RouterLink to="/accinfo/charinfo">See details</RouterLink>
+                <button @click="toggleComponent">See details {{ showComponent ? 'Hide' : 'Show' }}</button>
             </div>
         </div>
         <div v-else-if="champion.prof == 'Warrior'" class = "champion_displayW">
@@ -64,7 +65,7 @@ import { RouterLink } from 'vue-router'
                 <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
             </div>
             <div class = "champion_displayR">
-                <RouterLink to="/accinfo/charinfo">See details</RouterLink>
+                <button @click="toggleComponent">See details {{ showComponent ? 'Hide' : 'Show' }}</button>
             </div>
         </div>
         <div v-else-if="champion.prof == 'Elementalist'" class = "champion_displayEle">
@@ -73,7 +74,7 @@ import { RouterLink } from 'vue-router'
                 <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
             </div>
             <div class = "champion_displayR">
-                <RouterLink to="/accinfo/charinfo">See details</RouterLink>
+                <button @click="toggleComponent">See details {{ showComponent ? 'Hide' : 'Show' }}</button>
             </div>
         </div>
         <div v-else-if="champion.prof == 'Necromancer'" class = "champion_displayN">
@@ -82,7 +83,7 @@ import { RouterLink } from 'vue-router'
                 <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
             </div>
             <div class = "champion_displayR">
-                <RouterLink to="/accinfo/charinfo">See details</RouterLink>
+                <button @click="toggleComponent">See details {{ showComponent ? 'Hide' : 'Show' }}</button>
             </div>
         </div>
         <div v-else-if="champion.prof == 'Thief'" class = "champion_displayT">
@@ -91,7 +92,7 @@ import { RouterLink } from 'vue-router'
                 <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
             </div>
             <div class = "champion_displayR">
-                <RouterLink to="/accinfo/charinfo">See details</RouterLink>
+                <button @click="toggleComponent">See details {{ showComponent ? 'Hide' : 'Show' }}</button>
             </div>
         </div>
         <div v-else class = "champion_display">
@@ -100,9 +101,10 @@ import { RouterLink } from 'vue-router'
                 <p class = "championinfo">{{champion.lvl}}lvl {{champion.prof}} </p>
             </div>
             <div class = "champion_displayR">
-                <RouterLink to="/accinfo/charinfo">See details</RouterLink>
+                <button @click="toggleComponent">See details {{ showComponent ? 'Hide' : 'Show' }}</button>
             </div>
         </div>
+        <CharInfo v-if="showComponent" :myProp="champion.name" :ApiKey="ApiKey"/>
     </div>
     </main>
 </template>
@@ -113,6 +115,9 @@ export default {
         await this.doChamps()
     },
     methods:{
+        toggleComponent() {
+            this.showComponent = !this.showComponent
+        },
         async doChamps(){
             this.CHAMPS = [];
             await this.getNames();
@@ -154,6 +159,7 @@ export default {
     },
     data() {
         return{
+            showComponent: false,
             doWeHaveNames: false,
             CHAMPS: [{
                 name: "",
@@ -168,8 +174,6 @@ export default {
     props:{
         ApiKey: String,
     }
-
-
 }
 
 </script>
