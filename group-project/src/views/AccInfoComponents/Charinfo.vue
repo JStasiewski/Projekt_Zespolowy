@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import ItemDisplay from './ItemDisplay.vue'
+
+
+</script>
+
 <template>
   <div class="CharInventory">
     <h1>Inventory of {{myProp}}</h1>
@@ -5,6 +11,7 @@
       <ul>
         <li v-for="(item, index) in items" :key="index">
           <span>{{ item.slot }}</span>:   id {{ item.id }}
+          <ItemDisplay :itemID="item.id" />
         </li>
       </ul>
     </div>
@@ -13,6 +20,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+
 
 export default defineComponent({
   name: 'CharInfo',
