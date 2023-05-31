@@ -6,11 +6,10 @@ import ItemDisplay from './ItemDisplay.vue'
 
 <template>
   <div class="CharInventory">
-    <h1>Inventory of {{myProp}}</h1>
+    <h1>Inventory of {{ myProp }}</h1>
     <div v-if="items">
       <ul>
         <li v-for="(item, index) in items" :key="index">
-          <span>{{ item.slot }}</span>:   id {{ item.id }}
           <ItemDisplay :itemID="item.id" />
         </li>
       </ul>
@@ -42,10 +41,11 @@ export default defineComponent({
 </script>
 
 <style>
-.CharInventory{
+.CharInventory {
   background-color: darkgray;
   padding-bottom: 10px;
   border-radius: 10px;
   margin-bottom: 50px;
+  text-shadow: 0px 0px 3px #FFFFFF;
 }
 </style>

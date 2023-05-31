@@ -1,4 +1,4 @@
-.champion_display{
+.champion_display {
     border-style: solid;
     border-width: 5px;
     flex: 1;
@@ -17,98 +17,108 @@
     border-radius: 25px;
 
 }
+
 .champion_displayM {
     border-style: solid;
     border-width: 3px;
     flex: 1;
-    background-color:darkorchid;
-    margin: 5px 2px;
-    border-radius: 25px;
-    display: flex;
-    flex-direction: row;
-}
-.champion_displayE {
-    border-style: solid;
-    border-width: 0;
-    border-width: 3px;
-    flex: 1;
-    background-color:chocolate;
-    margin: 5px 2px;
-    border-radius: 25px;
-    display: flex;
-    flex-direction: row;
-}
-.champion_displayRen {
-    border-style: solid;
-    border-width: 0;
-    border-width: 3px;
-    flex: 1;
-    background-color:limegreen;
-    margin: 5px 2px;
-    border-radius: 25px;
-    display: flex;
-    flex-direction: row;
-}
-.champion_displayRev {
-    border-style: solid;
-    border-width: 0;
-    border-width: 3px;
-    flex: 1;
-    background-color:rgb(175, 8, 42);
-    margin: 5px 2px;
-    border-radius: 25px;
-    display: flex;
-    flex-direction: row;
-}
-.champion_displayW {
-    border-style: solid;
-    border-width: 0;
-    border-width: 3px;
-    flex: 1;
-    background-color:rgb(255, 196, 0);
-    margin: 5px 2px;
-    border-radius: 25px;
-    display: flex;
-    flex-direction: row;
-}
-.champion_displayEle {
-    border-style: solid;
-    border-width: 0;
-    border-width: 3px;
-    flex: 1;
-    background-color:rgb(165, 65, 65);
-    margin: 5px 2px;
-    border-radius: 25px;
-    display: flex;
-    flex-direction: row;
-}
-.champion_displayN {
-    border-style: solid;
-    border-width: 0;
-    border-width: 3px;
-    flex: 1;
-    background-color:rgb(8, 116, 53);
-    margin: 5px 2px;
-    border-radius: 25px;
-    display: flex;
-    flex-direction: row;
-}
-.champion_displayT {
-    border-style: solid;
-    border-width: 0;
-    border-width: 3px;
-    flex: 1;
-    background-color:rgb(115, 79, 124);
+    background-color: darkorchid;
     margin: 5px 2px;
     border-radius: 25px;
     display: flex;
     flex-direction: row;
 }
 
-.champion_displayL{
+.champion_displayE {
+    border-style: solid;
+    border-width: 0;
+    border-width: 3px;
+    flex: 1;
+    background-color: chocolate;
+    margin: 5px 2px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+.champion_displayRen {
+    border-style: solid;
+    border-width: 0;
+    border-width: 3px;
+    flex: 1;
+    background-color: limegreen;
+    margin: 5px 2px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+.champion_displayRev {
+    border-style: solid;
+    border-width: 0;
+    border-width: 3px;
+    flex: 1;
+    background-color: rgb(175, 8, 42);
+    margin: 5px 2px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+.champion_displayW {
+    border-style: solid;
+    border-width: 0;
+    border-width: 3px;
+    flex: 1;
+    background-color: rgb(255, 196, 0);
+    margin: 5px 2px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+.champion_displayEle {
+    border-style: solid;
+    border-width: 0;
+    border-width: 3px;
+    flex: 1;
+    background-color: rgb(165, 65, 65);
+    margin: 5px 2px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+.champion_displayN {
+    border-style: solid;
+    border-width: 0;
+    border-width: 3px;
+    flex: 1;
+    background-color: rgb(8, 116, 53);
+    margin: 5px 2px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+.champion_displayT {
+    border-style: solid;
+    border-width: 0;
+    border-width: 3px;
+    flex: 1;
+    background-color: rgb(115, 79, 124);
+    margin: 5px 2px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+.champion_displayL {
+    margin-left: 20px;
     flex: 1;
 }
-.champion_displayR{
+
+.champion_displayR {
     background-color: inherit;
     flex: 1;
     margin-right: 20px;
@@ -118,8 +128,9 @@
 
 
 
-.champion_holder{
-    
+.champion_holder {
+    text-shadow: 0px 0px 8px #FFFFFF;
+
     display: flex;
     flex-direction: column;
     width: 1;

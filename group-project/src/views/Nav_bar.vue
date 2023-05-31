@@ -17,14 +17,13 @@ import { RouterLink } from 'vue-router'
       <div class="nav_acc_info" v-else>
         <p>Welcome, {{ auth.currentUser?.displayName }}</p>
         <!-- <p>Welcome, {{userName}}</p> -->
-        <RouterLink to="/accinfo"><div>Account</div></RouterLink>
+        <RouterLink to="/accinfo">
+          <div>Account</div>
+        </RouterLink>
         <RouterLink @click.prevent="logoutNaV" to="/login">Logout</RouterLink>
 
         <!-- <button @click="logoutNaV">Logout</button> -->
       </div>
-    </div>
-    <div class="nav_barBOTTOM">
-      <RouterLink to="/crafting" class="L_body_elem">Crafting</RouterLink>
     </div>
   </nav>
 </template>
