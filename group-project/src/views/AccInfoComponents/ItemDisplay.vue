@@ -1,8 +1,9 @@
 <template>
   <div class="item_holder" @mouseover="hover = true" @mouseleave="hover = false">
     <img :src="itemsData.iconLink" alt="Photo" class="Image">
-    <div class="itemInfo" v-if="hover">
-      Im HERE
+    <div class="itemInfo" v-if="hover" @mouseover="hover = true" @mouseleave="hover = false">
+      <p>{{ itemsData.name }}</p>
+      <a :href="itemsData.wikiLink" target="_blank">Link do wiki</a>
     </div>
   </div>
 </template>
@@ -15,6 +16,7 @@ export default defineComponent({
   name: 'CharInfo',
   props: {
     itemID: Number,
+    item: null,
   },
   data() {
     return {
@@ -33,7 +35,7 @@ export default defineComponent({
     this.itemsData = {
       name: Item.data.name,
       iconLink: Item.data.icon,
-      wikiLink: "https://wiki.guildwars2.com/wiki/" + Item.data.name
+      wikiLink: "https://wiki.guildwars2.com/wiki/" + Item.data.name,
     }
   }
 })
@@ -41,11 +43,15 @@ export default defineComponent({
   
 <style>
 .itemInfo {
+  background-color: black;
+  color: aliceblue;
+  opacity: 0.8;
   position: absolute;
   height: 100px;
   aspect-ratio: 1/1;
-  top: 100px;
-  left: 100px;
+  top: 95px;
+  left: 95px;
+  padding: 5px;
   z-index: 1;
 }
 
@@ -59,6 +65,7 @@ export default defineComponent({
   position: relative;
   height: 100px;
   aspect-ratio: 1/1;
+  text-shadow: none;
 }
 </style>
   
