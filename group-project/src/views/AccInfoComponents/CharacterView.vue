@@ -154,6 +154,27 @@ import CharInfo from '../AccInfoComponents/Charinfo.vue'
   </script>
   
 <style scoped src="./CharacterStyle.css">
-
 </style>
   
+<style>
+.champion_displayR{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button{
+    background-image: url('../../assets/button.png');
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: "Papyrus";
+    border-radius: 10px;
+    border:ridge 5px;
+
+    font-weight: 900;   
+}
+
+</style>

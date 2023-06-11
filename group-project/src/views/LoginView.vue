@@ -17,7 +17,7 @@ import { doc, getDoc } from '@firebase/firestore'
       <input type="password" v-model="password" required />
     </label>
 
-    <button type="submit" class="login_elem" @click.prevent="login">Login</button>
+    <button type="submit" class="login_elem_button" @click.prevent="login">Login</button>
     <div class="login_elem">
       <span>Don't have account yet? </span>
       <RouterLink to="/register">Register here!</RouterLink>
@@ -98,5 +98,12 @@ export default {
 .login_elem {
   flex: 1;
   margin-top: 25px;
+}
+
+.login_elem_button {
+  margin-top: 25px;
+  height: 50px;
+  width: 300px;
+  font-size: larger;
 }
 </style>
